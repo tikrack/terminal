@@ -3,12 +3,11 @@ const elm_root = document.querySelector('#root');
 const elm_reader = document.querySelector('#reader');
 const elm_reader_input = document.querySelector('#reader_input');
 
-const commands = [
-    {
-        command: 'clear',
-        type: 1
-    }
-]
+const commands = [{
+    command: '', type: 0, result: ''
+}, {
+    command: 'clear', type: 1
+}]
 
 elm_root.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -17,9 +16,21 @@ elm_root.addEventListener('click', (e) => {
     }
 })
 
+const handleCommandRun = (cmd) => {
+
+}
+
 const runCommand = (command) => {
-    if (!commands.includes(command)) {
+    if (!commands.map(item => item.command).flat().includes(command)) {
         addCommandResult("Command not found!");
+    }
+
+    const cmd = commands.find(item => item.command === command);
+
+    if (cmd.type === 0) {
+        addCommandResult(cmd.result);
+    } else if (cmd.type === 1) {
+        handleComamndRun(cmd)
     }
 }
 
@@ -40,6 +51,8 @@ const addCommandResult = (result = "") => {
     cmd.insertAdjacentHTML('afterend', `
         <div class="result">${result}</div>
     `)
+
+    window.scrollTo(0, elm_body.scrollHeight);
 }
 
 window.addEventListener('keypress', (e) => {
