@@ -3,5 +3,12 @@
 }
 
 body {
+    padding: 10px;
+    background-color: #000000;
+}
+
+#root {
     background-color: #1d1d20;
+    border: 1px solid gray;
+    height: calc(100dvh - 20px);
 }
