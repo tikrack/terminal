@@ -71,7 +71,7 @@ const handleCommandRun = (cmd) => {
 const runCommand = (command) => {
     const cmd = commands.find(item => item.command === command);
     if (!cmd) {
-        addCommandResult("Command not found!");
+        addCommandResult("Command not found! => for see commands run `help`.");
         return;
     }
 
