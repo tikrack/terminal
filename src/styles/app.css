@@ -20,15 +20,15 @@ body {
 #root {
     background-color: #1d1d20;
     border: 1px solid gray;
-    height: calc(100dvh - 20px);
+    min-height: calc(100dvh - 20px);
     padding: 10px;
 }
 
-#reader {
+#reader, .command {
     display: flex;
     gap: 10px;
 
-    label {
+    label, span {
         color: #63a863;
         font-weight: 600;
         letter-spacing: 1px;
@@ -49,4 +49,12 @@ body {
             color: #ffffff;
         }
     }
+}
+
+.result {
+    white-space: pre;
+    color: white;
+    padding-block: 5px;
+    padding-left: 10px;
+    font-size: 16px;
 }
