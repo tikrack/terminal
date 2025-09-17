@@ -4,11 +4,33 @@ const elm_root = document.querySelector('#root');
 const elm_reader = document.querySelector('#reader');
 const elm_reader_input = document.querySelector('#reader_input');
 
-const commands = [{command: '', type: 0, result: ''}, {command: 'clear', type: 1}, {
-    command: 'help',
-    type: 0,
-    result: 'Available commands:\n- clear\n- help\n- about'
-}, {command: 'about', type: 0, result: 'Tiki Terminal v1.0\nMade by tikrack.'}];
+const commands = [
+    { command: 'clear', type: 1 },
+    { command: 'help', type: 1 },
+    { command: 'about', type: 0, result: 'Tiki Terminal v1.1\nMade by <a href="https://github.com/tikrack">Tikrack</a> 🐧' },
+    { command: 'uname', type: 0, result: 'Linux tikrackOS 6.1.0-virtual #1 SMP x86_64' },
+    { command: 'github', type: 0, result: 'https://github.com/tikrack' },
+    { command: 'email', type: 0, result: 'tikrackcode@gmail.com' },
+    {
+        command: 'ls',
+        type: 0,
+        result: '<span style="color: blue">Projects</span>'
+    },
+    {
+        command: 'cd',
+        type: 1
+    },
+    {
+        command: 'cd Projects',
+        type: 1,
+        hidden: true
+    },
+    {
+        command: 'pwd',
+        type: 0,
+        result: '<span style="color: greenyellow">At Tikrack Home !</span>'
+    },
+];
 
 // History
 let history = [];
@@ -25,9 +47,25 @@ const cClear = () => {
     });
 };
 
+const cHelp = () => {
+    let keys = commands.map((cmd) => {
+        if (cmd?.hidden) return;
+        return cmd.command
+    }).flat();
+    keys = keys.filter(k => k !== undefined);
+    console.log(keys);
+    addCommandResult(keys.join(`\n`))
+}
+
+const cCdProject = () => {
+    location.replace("https://github.com/tikrack?tab=repositories");
+}
+
 // Functions
 const handleCommandRun = (cmd) => {
     if (cmd.command === "clear") cClear();
+    if (cmd.command === "help") cHelp();
+    if (cmd.command === "cd Projects") cCdProject();
 };
 
 const runCommand = (command) => {
