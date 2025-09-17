@@ -1,14 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Quicksand:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 * {
     box-sizing: border-box;
+    font-family: "Space Mono", "Quicksand", "Fira Code", monospace;
+
+    ::selection {
+        background: #ffffff;
+        color: #000000;
+        font-weight: bold;
+    }
 }
 
 body {
     padding: 10px;
     background-color: #000000;
+    font-size: 17px;
 }
 
 #root {
     background-color: #1d1d20;
     border: 1px solid gray;
     height: calc(100dvh - 20px);
+    padding: 10px;
+}
+
+#reader {
+    display: flex;
+    gap: 10px;
+
+    label {
+        color: #63a863;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    input {
+        flex: 1;
+        background-color: transparent;
+        border: 0;
+
+        color: #ffffff;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: #ffffff;
+        }
+    }
 }
